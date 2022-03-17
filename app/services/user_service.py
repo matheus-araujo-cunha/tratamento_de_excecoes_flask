@@ -32,14 +32,14 @@ def validate_fields(name,email):
 def validate_email(email:str,fields_error:list):
 
     assert_field = check_field(email)
-  
+    email = format_email(email)
+
     if not assert_field:
         type_field = types[str(type(email))]
-        type(email).__name__
         fields_error.append({"email":type_field})
         return fields_error
     check_email_exist(email)
-    return format_email(email)
+    return email
 
 
 def validate_name(name:str,fields_error:list):
